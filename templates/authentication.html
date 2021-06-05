@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title>authentication page
+  </title>
+</head>
+<center>
+
+  <body
+    background="https://cdn.arstechnica.net/wp-content/uploads/2020/02/Screen-Shot-2020-02-21-at-11.22.14-AM-800x526.png">
+
+    <form action="{{ url_for("check")}}" method="post">
+      <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <font face="Calibri" color="red" size="4"><b>ENTER URL</b></font>
+      </label>
+      <input type="text" name="url_data"  value=''>
+      <br>
+      <br>
+      <button type="submit" >submit</button>
+      <input type="Reset">
+    </form>
+      {% if message %}  
+        <p>Website <strong>{{website}} <br></strong> <strong>{{message}} </strong></p>  
+    {% endif %}  
+  </body>
+</center>
+
+</html>
