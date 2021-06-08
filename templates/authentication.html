@@ -1,28 +1,102 @@
+
+<!DOCTYPE html>
 <html>
+  <head>
+    <title>Pishing Detecion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
 
-<head>
-  <title>authentication page
-  </title>
-</head>
-<center>
+    body,html,form{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #e8e6ee !important;
+    }
 
-  <body
-    background="https://cdn.arstechnica.net/wp-content/uploads/2020/02/Screen-Shot-2020-02-21-at-11.22.14-AM-800x526.png">
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
 
-    <form action="{{ url_for("check")}}" method="post">
-      <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <font face="Calibri" color="red" size="4"><b>ENTER URL</b></font>
-      </label>
-      <input type="text" name="url_data"  value=''>
-      <br>
-      <br>
-      <button type="submit" >submit</button>
-      <input type="Reset">
-    </form>
-      {% if message %}  
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+
+    .green {
+      color: 	#0bd448;
+    }
+
+    .red {
+      color: 	#e04c11;
+    }
+
+    
+    </style>
+
+  </head>
+  <body>
+    <form action="{{ url_for("check")}}" method="post" >
+
+    <div class="container h-100">
+      <div class="d-flex justify-content-center h-100">
+
+        <div class="searchbar">    
+            <input class="search_input" type="text" name="url_data" placeholder="Search...">
+            <button type="submit" class="search_icon"><i class="fas fa-search"></i></button>  
+            <br>
+            <br>
+      {% if message %} 
+      {% if is_good %} 
+      <i class="fas fa-check-circle fa-10x green"></i>
+      {% endif %}
+      {% if is_bad %} 
+      <i class="fas fa-times-circle fa-10x red"></i>
+      {% endif %}
         <p>Website <strong>{{website}} <br></strong> <strong>{{message}} </strong></p>  
-    {% endif %}  
-  </body>
-</center>
+      {% endif %} 
+        </div>
+      
+      </div>
 
+    </div>
+  </form>
+
+  </body>
 </html>
